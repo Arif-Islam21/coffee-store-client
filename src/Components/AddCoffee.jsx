@@ -1,3 +1,5 @@
+import Swal from "sweetalert2";
+
 const AddCoffee = () => {
   const handleAddCoffee = (event) => {
     event.preventDefault();
@@ -20,7 +22,34 @@ const AddCoffee = () => {
       photo,
     };
     console.log(newCoffee);
+
+    // SEND DATA TO THE SERVER
+    fetch("http://localhost:5000/coffee", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newCoffee),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Success",
+            text: "User added successfully",
+            icon: "success",
+          });
+        }
+      });
   };
+  // imgbb link : https://i.ibb.co/5WYBb1M/440877699-1966608320421858-5771399157851522149-n.jpg
+  // https://i.postimg.cc/fbhTBC9v/1.png
+  // https://i.postimg.cc/RhqMNbkv/2.png
+  // https://i.postimg.cc/jjQq9f6Y/3.png
+  // https://i.postimg.cc/76HPyLXG/4.png
+  // https://i.postimg.cc/G2XL31SM/5.png
+  // https://i.postimg.cc/mkqTMy4C/6.png
 
   return (
     <div className="bg-[#F4F3F0] p-24">
