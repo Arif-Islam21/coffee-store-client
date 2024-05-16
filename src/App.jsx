@@ -4,6 +4,7 @@ import CoffeeCard from "./Components/CoffeeCard";
 
 function App() {
   const coffees = useLoaderData();
+
   return (
     <div className="m-20">
       <h1 className="text-6xl text-center text-purple-600">
