@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import PropTypes from "prop-types";
 
 const CoffeeCard = ({ coffee, setCoffees, coffees }) => {
-  const { _id, name, quantity, supplier, taste, category, details, photo } =
-    coffee;
+  const { _id, name, quantity, supplier, taste, photo } = coffee;
 
   const handleDelete = (_id) => {
     console.log(_id);
@@ -73,3 +73,9 @@ const CoffeeCard = ({ coffee, setCoffees, coffees }) => {
 };
 
 export default CoffeeCard;
+
+CoffeeCard.propTypes = {
+  coffee: PropTypes.object,
+  setCoffees: PropTypes.func,
+  coffees: PropTypes.array,
+};
